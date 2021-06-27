@@ -1,10 +1,7 @@
-if has("win64") || has("win32")
-  source $VIMRUNTIME/vimrc_example.vim
-endif
+" if has("win64") || has("win32")
+  " source $VIMRUNTIME/vimrc_example.vim
+" endif
 
-let g:user_name = $USER
-" let g:lsp_cl="vimlsp"
-let g:lsp_cl="neocl"
 " set term=xterm-256color
 
 "fix alt arrow from terminal which is not xterm
@@ -23,11 +20,16 @@ let g:lsp_cl="neocl"
   " " imap <ESC>[1;5C <C-Right>
   " " imap <ESC>[1;5D <C-Left>
 " endif
-
+let g:user_name = $USER
+" let g:lsp_cl="vimlsp"
+let g:lsp_cl="neocl"
 set nocompatible
+
 filetype plugin on
+
 set modelines=0
 set nomodeline
+
 set clipboard=unnamedplus
 
 " execute pathogen#infect()
@@ -107,6 +109,7 @@ Plug 'tpope/vim-sleuth'
 Plug 'Valloric/YouCompleteMe', { 'for': ['c','cpp','python','javascript'], 'do': './install.py --clang-completer --system-libclang --ts-completer' }
 " Plug 'dense-analysis/ale'
 Plug 'm-pilia/vim-ccls'
+" o toggle open/close node in ccls
 " Plug 'Valloric/YouCompleteMe', { 'for': 'cpp', 'do': './install.py --clang-completer' }
 " Plug 'tpope/vim-fugitive', { 'on': 'Gdiff' }
 " Plug 'tommcdo/vim-fugitive-blame-ext', { 'on': 'Gdiff' }
@@ -152,8 +155,20 @@ Plug 'lambdalisue/gina.vim'
 Plug '~/.vim/bundle/fzf_browser'
 Plug 'yssl/QFEnter'
 " Plug 'Raimondi/delimitMate'
+" Plug 'ap/vim-css-color'
+Plug 'chrisbra/Colorizer'
+" Plug 'chrisbra/unicode.vim'
+Plug 'tpope/vim-characterize'
+" Plug 'svermeulen/vim-easyclip'
+" gA show nr hex/dec/octal under cursor crd crx cro crb to convert
+Plug 'glts/vim-radical'
+Plug 'glts/vim-magnum'
+Plug 'jeetsukumaran/vim-filebeagle'
+Plug 'tpope/vim-vinegar'
+Plug 'jackguo380/vim-lsp-cxx-highlight'
 call plug#end()
 
+let g:lsp_cxx_hl_use_text_props = 1
 set rtp+=~/.vim/bundle/fzf_browser
 
 """ JUPYTER """
@@ -174,7 +189,7 @@ autocmd FileType javascript nmap <buffer> <C-]> :YcmCompleter GoTo<CR>
 "show current colors :hi
 hi IncSearch cterm=NONE ctermfg=grey ctermbg=blue
 " purple for highlight hits
-" highlight Search guibg='Purple' guifg='NONE'
+highlight Search guibg='Purple' guifg='NONE'
 hi Visual  guifg=#000000 guibg=#FFFFFF gui=none
 "allows Highlight plugin to save conf
 "set viminfo^=!
@@ -259,14 +274,14 @@ if ( g:lsp_cl == "neocl" )
   if ( g:user_name == "pc" )
     call EnsureDirExists("/home/pc/tools/cclsCache/")
     let g:LanguageClient_serverCommands = {
-      \ 'cpp': ['ccls', '-init={"compilationDatabaseCommand":"","compilationDatabaseDirectory":"","cache":{"directory":"/home/pc/tools/cclsCache/"}}', '--log-file=/tmp/ccls.log' ],
-      \ 'c': ['ccls', '-init={"compilationDatabaseCommand":"","compilationDatabaseDirectory":"","cache":{"directory":"/home/pc/tools/cclsCache/"}}', '--log-file=/tmp/ccls.log' ]
+      \ 'cpp': ['ccls', '-init={"compilationDatabaseCommand":"","compilationDatabaseDirectory":"","cache":{"directory":"/home/pc/tools/cclsCache/"}, "highlight":{"lsRanges":true}}', '--log-file=/tmp/ccls.log' ],
+      \ 'c': ['ccls', '-init={"compilationDatabaseCommand":"","compilationDatabaseDirectory":"","cache":{"directory":"/home/pc/tools/cclsCache/"}, "highlight":{"lsRanges":true}}', '--log-file=/tmp/ccls.log' ]
     \ }
   else
     call EnsureDirExists("/home/km000057/HD0/tools/ccls2/vimcache/")
     let g:LanguageClient_serverCommands = {
-      \ 'cpp': ['ccls', '-init={"compilationDatabaseCommand":"","compilationDatabaseDirectory":"","cache":{"directory":"/home/km000057/HD0/tools/ccls2/vimcache/"}}', '--log-file=/tmp/ccls.log' ]
-      \ 'c': ['ccls', '-init={"compilationDatabaseCommand":"","compilationDatabaseDirectory":"","cache":{"directory":"/home/km000057/HD0/tools/ccls2/vimcache/"}}', '--log-file=/tmp/ccls.log' ],
+      \ 'cpp': ['ccls', '-init={"compilationDatabaseCommand":"","compilationDatabaseDirectory":"","cache":{"directory":"/home/km000057/HD0/tools/ccls2/vimcache/"}, "highlight":{"lsRanges":true}}', '--log-file=/tmp/ccls.log' ]
+      \ 'c': ['ccls', '-init={"compilationDatabaseCommand":"","compilationDatabaseDirectory":"","cache":{"directory":"/home/km000057/HD0/tools/ccls2/vimcache/"}, "highlight":{"lsRanges":true}}', '--log-file=/tmp/ccls.log' ],
     \ }
   endif
 else
@@ -320,7 +335,7 @@ else
           \ 'name': 'ccls',
           \ 'cmd': {server_info->['ccls']},
           \ 'root_uri': {server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), 'compile_commands.json'))},
-          \ 'initialization_options': { 'cache': {'directory': '/home/pc/tools/cclsCache2' }},
+          \ 'initialization_options': { 'cache': {'directory': '/home/pc/tools/cclsCache2' }, "highlight":{"lsRanges":true}},
           \ 'whitelist': ['c', 'cpp', 'objc', 'objcpp', 'cc'],
           \ 'allowlist': ['c', 'cpp', 'objc', 'objcpp', 'cc'],
           \ })
@@ -332,7 +347,7 @@ else
           \ 'name': 'ccls',
           \ 'cmd': {server_info->['ccls']},
           \ 'root_uri': {server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), 'compile_commands.json'))},
-          \ 'initialization_options': { 'cache': {'directory': '/home/km000057/tools/ccls/Release/cacheVimLsp' }},
+          \ 'initialization_options': { 'cache': {'directory': '/home/km000057/tools/ccls/Release/cacheVimLsp' }, "highlight":{"lsRanges":true}},
           \ 'whitelist': ['c', 'cpp', 'objc', 'objcpp', 'cc'],
           \ 'allowlist': ['c', 'cpp', 'objc', 'objcpp', 'cc'],
           \ })
@@ -567,6 +582,9 @@ let g:my_db_path="~/GIT/mainline/"
 " similar to \s with cscope
 "
 "##########################
+"
+"GO TO DEF C-]
+"GO BACK C-t
 " rules for loading tags
 let g:currentTagFilePath=""
 let g:lspLoaded=""
@@ -679,14 +697,15 @@ set softtabstop=2
 
 if has("unix")
   " set guifont=Monospace\ 13
-  set guifont=Ubuntu\ Mono\ 12
+  set guifont=Ubuntu\ Mono\ 13
 else
   set guifont=Lucida_Console:h12:b:cANSI:qDRAFT   
 endif
 
 set wildmode=longest,list,full
 set wildmenu
-set path+=/home/km000057/doc/**,/home/km000057/GIT/mainline/vobs/Opera_Infrastructure_Services/Media/**,/home/km000057/GIT/mainline/vobs/Opera_Platform_Linux/GPAL/GPALMedia/**,/home/km000057/_DWE_/**,/home/km000057/GIT/mainline/vobs/Opera_Infrastructure_Services/Media/Interface/**,/home/km000057/GIT/mainline/vobs/Opera_Infrastructure_Services/Media/VoiceEngine/**,**
+" set path+=/home/km000057/doc/**,/home/km000057/GIT/mainline/vobs/Opera_Infrastructure_Services/Media/**,/home/km000057/GIT/mainline/vobs/Opera_Platform_Linux/GPAL/GPALMedia/**,/home/km000057/_DWE_/**,/home/km000057/GIT/mainline/vobs/Opera_Infrastructure_Services/Media/Interface/**,/home/km000057/GIT/mainline/vobs/Opera_Infrastructure_Services/Media/VoiceEngine/**,**
+set path+=.,**
 
 set scrolloff=4
 set hidden
@@ -805,10 +824,10 @@ nnoremap gp `[v`]
 " vmap <C-Down> ]egv
 "
 " move line good
-nnoremap <C-Down> :m .+1<CR>==
-nnoremap <C-Up> :m .-2<CR>==
-inoremap <C-Down> <Esc>:m .+1<CR>==gi
-inoremap <C-Up> <Esc>:m .-2<CR>==gi
+nnoremap <C-A-Down> :m .+1<CR>==
+nnoremap <C-A-Up> :m .-2<CR>==
+inoremap <C-A-Down> <Esc>:m .+1<CR>==gi
+inoremap <C-A-Up> <Esc>:m .-2<CR>==gi
 " vnoremap <C-Down> :m '>+1<CR>gv=gv
 " vnoremap <C-Up> :m '<-2<CR>gv=gv
 
@@ -1001,24 +1020,6 @@ augroup END
 
 
 
-"let g:ctrlp_map = '<c-a>'
-"let g:ctrlp_cmd = 'CtrlP /home/martinkolouch/phones_GIT/vobs/Opera_Infrastructure_Services/Media/'
-let g:ctrlp_cmd = 'CtrlP'
-let g:ctrlp_match_window_reversed=0
-let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\v[\/](tmp|node_modules)',
-  \ 'file': '\v\.(exe|so|dll|o|d)$',
-  \ }
-
-"search window on top
-"let g:ctrlp_match_window_bottom=1
-
-let g:ctrlp_clear_cache_on_exit = 0
-let g:ctrlp_by_filename = 1
-let g:ctrlp_show_hidden = 1
-
-
-let g:ctrlp_cache_dir = $HOME . '/.cache/ctrlp'
 if executable('ag')
   let g:ctrlp_user_command = 'ag -a -l --nocolor --cc --ccp -g "" %s'
   set grepprg=ag\ --nogroup\ --nocolor
@@ -1452,7 +1453,9 @@ endfunction
 set mouse=a
 " better pasting copied text
 set paste
-" set ttymouse=sgr
+" correct mouse for st terminal
+set ttymouse=sgr
+
 " set balloonexpr=MyBalloonExpr()
 " set balloondelay=250
 " set ballooneval
@@ -1765,3 +1768,41 @@ nnoremap <S-h> :call ToggleHiddenAll()<CR>
 "-Wall",
 "-Wextra",
 "-Wpedantic",
+
+
+
+"visual multi
+" Basic usage:
+" 
+    " select words with Ctrl-N (like Ctrl-d in Sublime Text/VS Code)
+    " create cursors vertically with Ctrl-Down/Ctrl-Up
+    " select one character at a time with Shift-Arrows
+    " press n/N to get next/previous occurrence
+    " press [/] to select next/previous cursor
+    " press q to skip current and get next occurrence
+    " press Q to remove current cursor/selection
+    " start insert mode with i,a,I,A
+    "
+    "
+"vim enter unicode insert mode, ctrl-v, type u2765
+function! UniToIcon()
+  let g:data = expand("<cword>")
+  echom "xxx>"  . g:data . "<<<"
+  norm w
+  " call feedkeys("i\<C-v>" . g:data)
+  " norm <esc>
+  exe "normal! wi\<c-v>".g:data."\<esc>"
+endfunction
+
+
+function! <SID>AutoMkdir() abort
+    let l:dir = expand('<afile>:p:h')
+    if !isdirectory(l:dir)
+        call mkdir(l:dir, 'p')
+    endif
+endfunction
+
+augroup AutoMkdir
+    autocmd!
+    autocmd BufWritePre,FileWritePre,BufNewFile * call <SID>AutoMkdir()
+augroup END

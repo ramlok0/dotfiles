@@ -37,3 +37,6 @@ match_qstring='"[^"\\]*(\\.[^"\\]*)*"' # NOTE: Adds 1 backreference
             -e "/^_NET_WM_NAME\(UTF8_STRING\) = ($match_qstring)$/{s//title=\1/; h}" \
             -e '${g; p}'
 } | sort | tr "\n" " " | sed -r 's/^(.*) $/[\1]\n/'
+#xdotool getwindowgeometry $(xdotool selectwindow)
+#xwininfo - pointclick get info
+#xprop

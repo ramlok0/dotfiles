@@ -1,3 +1,6 @@
+let g:user_name = $USER
+" let g:lsp_cl="vimlsp"
+let g:lsp_cl="neocl"
 set nocompatible
 
 filetype plugin on
@@ -18,7 +21,7 @@ Plug 'haya14busa/incsearch.vim'
 Plug 'haya14busa/incsearch-easymotion.vim'
 Plug 'easymotion/vim-easymotion'
 Plug 'rbong/vim-buffest'
-Plug 'rhysd/vim-healthcheck'
+" Plug 'rhysd/vim-healthcheck'
 Plug 'mg979/vim-visual-multi'
 Plug 'mptre/vim-printf'
 Plug 'ronakg/quickr-preview.vim'
@@ -39,7 +42,8 @@ Plug 'bignimbus/you-are-here.vim'
 " Plug 'Yilin-Yang/vim-markbar'
 Plug 'ojroques/vim-oscyank'
 Plug 'tomtom/tcomment_vim'
-Plug 'vim-scripts/YankRing.vim'
+"very slow on x deleting
+" Plug 'vim-scripts/YankRing.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'pbogut/fzf-mru.vim'
@@ -50,11 +54,18 @@ Plug '~/.vim/bundle/molokai'
 Plug 'xolox/vim-misc'
 Plug 'markonm/traces.vim'
 Plug 'justinmk/vim-sneak'
-" Plug 'autozimu/LanguageClient-neovim', { 'on': 'LanguageClientStart' }
- Plug 'autozimu/LanguageClient-neovim', {
-     \ 'branch': 'next',
-     \ 'do': 'bash install.sh',
-     \ }
+" if ( g:lsp_cl == "neocl" )
+" " Plug 'autozimu/LanguageClient-neovim', { 'on': 'LanguageClientStart' }
+ " Plug 'autozimu/LanguageClient-neovim', {
+     " \ 'branch': 'next',
+     " \ 'do': 'bash install.sh',
+     " \ }
+" else
+" " Plug 'devjoe/vim-codequery', { 'for': 'cpp' }
+  " Plug 'prabirshrestha/vim-lsp'
+" " Plug 'pdavydov108/vim-lsp-cquery', { 'for': 'cpp' }
+" " Plug 'pdavydov108/vim-lsp-cquery'
+" endif
 " Plug 'tomasr/molokai' " now it's ok in plug menu...but it won't update
 " Plug 'simnalamburt/vim-mundo', { 'on': 'MundoToggle' }
 Plug 'ronakg/quickr-cscope.vim'
@@ -71,7 +82,7 @@ Plug 'derekwyatt/vim-fswitch'
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-sleuth'
 "git pull --recurse-submodules
-Plug 'Valloric/YouCompleteMe', { 'for': ['cpp','python','javascript'], 'do': './install.py --clang-completer --system-libclang --ts-completer' }
+" Plug 'Valloric/YouCompleteMe', { 'for': ['c','cpp','python','javascript'], 'do': './install.py --clang-completer --system-libclang --ts-completer' }
 " Plug 'dense-analysis/ale'
 Plug 'm-pilia/vim-ccls'
 " Plug 'Valloric/YouCompleteMe', { 'for': 'cpp', 'do': './install.py --clang-completer' }
@@ -107,9 +118,9 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'jremmen/vim-ripgrep'
 Plug 'skywind3000/quickmenu.vim'
 Plug 'cohama/agit.vim', { 'on': 'Agit' }
-Plug '~/.vim/bundle/startupFn'
+Plug '~/.config/nvim/bundle/startupFn'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'Lenovsky/nuake'
+Plug '~/.config/nvim/bundle/nuake'
 " move selected line up/down
 Plug 'zirrostig/vim-schlepp'
 " do in selection B or search S
@@ -117,9 +128,398 @@ Plug 'vim-scripts/vis'
 "https://github.com/t9md/vim-textmanip maybe better moving of blocks with insert/replace
 " Plug 'conweller/findr.vim'
 " Plug 'rbong/vim-flog'
-Plug 'caenrique/nvim-toggle-terminal'
-Plug 'akinsho/nvim-toggleterm.lua'
+" Plug 'caenrique/nvim-toggle-terminal'
+" Plug 'akinsho/nvim-toggleterm.lua'
+Plug '~/.config/nvim/bundle/fzf_browser'
+Plug 'yssl/QFEnter'
+" Plug 'Raimondi/delimitMate'
+" Plug 'ap/vim-css-color'
+Plug 'chrisbra/Colorizer'
+" Plug 'chrisbra/unicode.vim'
+Plug 'tpope/vim-characterize'
+" Plug 'svermeulen/vim-easyclip'
+" gA show nr hex/dec/octal under cursor crd crx cro crb to convert
+Plug 'glts/vim-radical'
+Plug 'glts/vim-magnum'
+Plug 'neovim/nvim-lspconfig'
+" Plug 'ray-x/guihua.lua', {'do': 'cd lua/fzy && make' }
+" Plug 'ray-x/navigator.lua'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'romgrk/nvim-treesitter-context'
+Plug 'nvim-treesitter/playground'
+Plug 'hrsh7th/nvim-compe'
+" Plug 'ggandor/lightspeed.nvim'
+Plug 'ojroques/nvim-lspfuzzy'
+" Plug 'nvim-lua/completion-nvim'
+" " Plug 'haorenW1025/completion-nvim'
+Plug 'nvim-treesitter/completion-treesitter'
+" " Plug 'steelsojka/completion-buffers'
+" " Plug 'aca/completion-tabnine', { 'do': './install.sh' }
+Plug 'nvim-lua/popup.nvim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
+Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
+Plug 'nvim-telescope/telescope-fzf-writer.nvim'
+Plug 'dhruvmanila/telescope-bookmarks.nvim'
+" Plug 'jackguo380/vim-lsp-cxx-highlight'
+" Plug 'dense-analysis/ale'
+Plug 'mizlan/iswap.nvim'
+Plug 'ray-x/lsp_signature.nvim'
+Plug 'hrsh7th/nvim-compe'
+Plug 'sindrets/diffview.nvim'
+" Plug 'glepnir/lspsaga.nvim'
 call plug#end()
+
+let g:ale_completion_enabled = 0
+
+
+" lua <<EOF
+" require'lspsaga'.init_lsp_saga {
+ " use_saga_diagnostic_sign = true,
+ " error_sign = '',
+ " warn_sign = '',
+ " hint_sign = '',
+ " infor_sign = '',
+ " dianostic_header_icon = '   ',
+ " code_action_icon = ' ',
+ " code_action_prompt = {
+   " enable = true,
+   " sign = true,
+   " sign_priority = 20,
+   " virtual_text = true,
+ " },
+ " finder_definition_icon = '  ',
+ " finder_reference_icon = '  ',
+ " max_preview_lines = 10, -- preview lines of lsp_finder and definition preview
+ " finder_action_keys = {
+   " open = 'o', vsplit = 's',split = 'i',quit = 'q',scroll_down = '<C-f>', scroll_up = '<C-b>' -- quit can be a table
+ " },
+ " code_action_keys = {
+   " quit = 'q',exec = '<CR>'
+ " },
+ " rename_action_keys = {
+   " quit = '<C-c>',exec = '<CR>'  -- quit can be a table
+ " },
+ " definition_preview_icon = '  ',
+" -- "single" "double" "round" "plus"
+ " border_style = "single",
+ " rename_prompt_prefix = '➤'
+" -- if you don't use nvim-lspconfig you must pass your server name and
+" -- the related filetypes into this table
+" -- like server_filetype_map = {metals = {'sbt', 'scala'}}
+" -- server_filetype_map = {}
+" }
+" EOF
+
+" lua require "nvim-treesitter".setup()
+" lua require "nvim-treesitter.highlight"
+lua require('lspfuzzy').setup {}
+" lua require('completion')
+
+lua require 'lsp_signature'.on_attach()
+lua require'treesitter-context.config'.setup{ enable = true }
+lua <<EOF
+require('telescope').setup {
+  extensions = {
+    fzf = {
+      fuzzy = true,                    -- false will only do exact matching
+      override_generic_sorter = false, -- override the generic sorter
+      override_file_sorter = true,     -- override the file sorter
+      case_mode = "smart_case",        -- or "ignore_case" or "respect_case"
+                                       -- the default case_mode is "smart_case"
+    },
+    fzf_writer = {
+      minimum_grep_characters = 2,
+      minimum_files_characters = 2,
+
+      -- Disabled by default.
+      -- Will probably slow down some aspects of the sorter, but can make color highlights.
+      -- I will work on this more later.
+      use_highlighter = true,
+    },
+   bookmarks = {
+      -- Available: 'brave', 'google_chrome', 'safari', 'firefox', 'firefox_dev'
+      selected_browser = 'firefox',
+
+      -- Either provide a shell command to open the URL
+      url_open_command = 'open',
+
+      -- Or provide the plugin name which is already installed
+      -- Available: 'vim_external', 'open_browser'
+      url_open_plugin = nil,
+      firefox_profile_name = "r4d0mctl.default",
+    },
+  }
+}
+EOF
+"-- To get fzf loaded and working with telescope, you need to call
+"-- load_extension, somewhere after setup function:
+lua require('telescope').load_extension('fzf')
+lua require('telescope').load_extension('bookmarks')
+
+lua <<EOF
+require'compe'.setup {
+  enabled = true;
+  autocomplete = true;
+  debug = false;
+  min_length = 3;
+  preselect = 'enable';
+  throttle_time = 100;
+  source_timeout = 200;
+  resolve_timeout = 800;
+  incomplete_delay = 400;
+  max_abbr_width = 100;
+  max_kind_width = 100;
+  max_menu_width = 100;
+  documentation = true;
+
+  source = {
+    path = true;
+    buffer = true;
+    calc = true;
+    nvim_lsp = true;
+    nvim_lua = true;
+    vsnip = true;
+    ultisnips = true;
+  };
+}
+EOF
+
+lua <<EOF
+require'nvim-treesitter.configs'.setup {
+  ensure_installed = "cpp", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+  -- run TSInstall maintained when updateding pluing ... line above slows down startup
+  ignore_install = { "javascript" }, -- List of parsers to ignore installing
+  highlight = {
+    enable = true,              -- false will disable the whole extension
+    disable = { "rust" },  -- list of language that will be disabled
+  },
+}
+EOF
+
+lua <<EOF
+local on_attach_vim = function(client)
+    -- require('completion').on_attach(client)
+    --vim.api.nvim_command('autocmd CursorHold <buffer> lua vim.lsp.util.show_line_diagnostics()')
+    require'lsp_signature'.on_attach({
+      bind = true, -- This is mandatory, otherwise border config won't get registered.
+      handler_opts = {
+        border = "single"
+      },
+      extra_trigger_chars = {'(  ',', '}
+    })
+    -- Not sure if this is right
+   vim.cmd("setlocal omnifunc=v:lua.vim.lsp.omnifunc")
+  end
+
+  require'lspconfig'.ccls.setup({
+    cmd = {
+        'ccls',
+       --'--init={"cache": {"directory": "/tmp/ccls-cache"}}',
+        '--log-file=/tmp/cclsNvim'
+    };
+    handlers = {
+       ["textDocument/publishDiagnostics"] = vim.lsp.with(
+         vim.lsp.diagnostic.on_publish_diagnostics, {
+           -- Disable virtual_text
+           virtual_text = true,
+          -- Disable signs
+          signs = false,
+         }
+       ),
+     },
+    init_options =
+    {
+      compilationDatabaseCommand = "",
+      compilationDatabaseDirectory ="",
+      lint = false,
+      cache = { directory = "/home/pc/tools/cclsCacheNvim/" },
+      highlight =
+        {
+          lsRanges = true;
+        }
+    };
+    on_attach = on_attach_vim,
+    filetypes = { "c", "cpp" },
+    root_dir = require'lspconfig'.util.root_pattern("compile_commands.json") or dirname
+  })
+EOF
+
+
+lua <<EOF
+local cb = require'diffview.config'.diffview_callback
+require'diffview'.setup {
+  diff_binaries = false,    -- Show diffs for binaries
+  file_panel = {
+    width = 35,
+    use_icons = false        -- Requires nvim-web-devicons
+  },
+  key_bindings = {
+    disable_defaults = false,                   -- Disable the default key bindings
+    -- The `view` bindings are active in the diff buffers, only when the current
+    -- tabpage is a Diffview.
+    view = {
+      ["<tab>"]     = cb("select_next_entry"),  -- Open the diff for the next file 
+      ["<s-tab>"]   = cb("select_prev_entry"),  -- Open the diff for the previous file
+      ["<leader>e"] = cb("focus_files"),        -- Bring focus to the files panel
+      ["<leader>b"] = cb("toggle_files"),       -- Toggle the files panel.
+    },
+    file_panel = {
+      ["j"]             = cb("next_entry"),         -- Bring the cursor to the next file entry
+      ["<down>"]        = cb("next_entry"),
+      ["k"]             = cb("prev_entry"),         -- Bring the cursor to the previous file entry.
+      ["<up>"]          = cb("prev_entry"),
+      ["<cr>"]          = cb("select_entry"),       -- Open the diff for the selected entry.
+      ["o"]             = cb("select_entry"),
+      ["<2-LeftMouse>"] = cb("select_entry"),
+      ["-"]             = cb("toggle_stage_entry"), -- Stage / unstage the selected entry.
+      ["S"]             = cb("stage_all"),          -- Stage all entries.
+      ["U"]             = cb("unstage_all"),        -- Unstage all entries.
+      ["R"]             = cb("refresh_files"),      -- Update stats and entries in the file list.
+      ["<tab>"]         = cb("select_next_entry"),
+      ["<s-tab>"]       = cb("select_prev_entry"),
+      ["<leader>e"]     = cb("focus_files"),
+      ["<leader>b"]     = cb("toggle_files"),
+    }
+  }
+}
+EOF
+
+" lua <<EOF
+" local lsp = require('lspconfig')
+" lsp.clangd.setup{ root_dir = lsp.util.root_pattern("compile_commands.json") or dirname }
+" EOF
+" " " lua require'lspconfig'.clangd.setup{root_dir = require'lspconfig'.util.root_pattern("compile_commands.json") or dirname}
+  " root_dir = nvim_lsp.util.root_pattern("compile_commands.json") or dirname }
+" --  --Enable completion triggered by <c-x><c-o>
+" --  buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
+let g:lsp_cxx_hl_use_text_props = 1
+
+let g:completion_sorting = 'none'
+let g:completion_enable_auto_hover = 1
+let g:completion_trigger_on_delete = 1
+let g:completion_matching_ignore_case = 1
+let g:completion_matching_strategy_list = ['exact', 'substring', 'fuzzy']
+" autocmd BufEnter * lua require'completion'.on_attach()
+let g:completion_enable_auto_popup = 1
+let g:completion_enable_auto_signature = 1
+
+
+" Use <Tab> and <S-Tab> to navigate through popup menu
+inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+
+" Set completeopt to have a better completion experience
+set completeopt=menuone,noinsert,noselect
+
+" Avoid showing message extra message when using completion
+set shortmess+=c
+
+" By default auto popup is enabled
+let g:completion_enable_auto_popup = 1
+
+let g:completion_chain_complete_list = {
+    \ 'default': [
+    \    {'complete_items': ['lsp', 'buffers', 'tabnine' ]},
+    \    {'mode': '<c-p>'},
+    \    {'mode': '<c-n>'}
+    \]
+\}
+set shortmess+=c
+
+" Set completeopt to have a better completion experience
+set completeopt=menuone,noinsert,noselect
+" check conpletetion tree sitter
+" https://github.com/nvim-treesitter/completion-treesitter
+" let g:completion_enable_snippet = 'vim-vsnip'
+              " let g:completion_chain_complete_list = [
+                  " \{'complete_items': ['lsp', 'snippet', 'path', 'buffers']},
+                  " \{'mode': '<c-p>'},
+                  " \{'mode': '<c-n>'}
+              " \]
+              " let g:completion_items_priority = {
+                  " \'Function': 7,
+                  " \'Snippet': 5,
+                  " \'vim-vsnip': 5,
+                  " \'File': 2,
+                  " \'Folder': 1,
+                  " \'Path': 1,
+                  " \'Buffers': 0
+              " \}
+" https://gitter.im/completion-nvim/community?at=5ed4113e225dc25f54ba2bb1
+" ccls setup
+" require'nvim_lspconfig'.ccls.setup{
+  " on_attach = on_attach;
+  " capabilities = {
+    " textDocument = {
+      " completion = {
+        " completionItem = {
+          " snippetSupport = false
+        " }
+      " }
+    " }
+  " },
+" }
+
+" require('lspconfig').rust_analyzer.setup({
+  " capabilities = {
+    " textDocument = {
+      " completion = {
+        " completionItem = {
+          " resolveSupport = {
+            " properties = {
+              " "additionalTextEdits"
+            " }
+          " }
+        " }
+      " }
+    " }
+  " }
+" })
+
+" lua <<EOF
+
+" " Use <Tab> and <S-Tab> to navigate through popup menu
+" inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
+" inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+" 
+" imap <tab> <Plug>(completion_smart_tab)
+" imap <s-tab> <Plug>(completion_smart_s_tab)
+
+imap <silent> <c-p> <Plug>(completion_trigger)
+
+" lua <<EOF
+" local nvim_lsp = require'lspconfig'
+" local configs = require'lspconfig/configs'
+" configs.cclsx = {
+    " default_config = {
+      " cmd = {'ccls'};
+      " filetypes = {'cpp','c'};
+      " root_dir = nvim_lsp.util.root_pattern('compile_commands.json');
+      " name = 'cclsx';
+      " settings = {
+        " init_options = { compilationDatabaseDirectory = "/home/pc/praceData/NGIT/mainline/vobs/"; }
+        " };
+        " compilationDatabaseDirectory = "/home/pc/praceData/NGIT/mainline/vobs/";
+    " };
+  " };
+  " local on_attach = function(client, bufnr)
+    " local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
+    " local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
+    " buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
+" 
+  " local opts = { noremap=true, silent=true }
+" 
+" 
+" end
+" 
+" local servers = { "cclsx"}
+" for _, lsp in ipairs(servers) do
+  " nvim_lsp[lsp].setup { on_attach = on_attach }
+" end
+" EOF
+
+set rtp+=~/.vim/bundle/fzf_browser
 
 """ JUPYTER """
 " autocmd FileType julia,python call jupyter#MakeStandardCommands()
@@ -131,15 +531,25 @@ let g:ycm_auto_hover=''
 " let g:ale_statusline_format = ['☀️️ %d', '🕯️ %d', '']
 " let b:ale_fixers = {'javascript': ['prettier', 'eslint']}
 
+highlight Search guibg='Purple' guifg='NONE'
 let g:quickr_cscope_autoload_db = 0
 let g:quickr_cscope_keymaps = 0
 autocmd FileType javascript nmap <buffer> <C-]> :YcmCompleter GoTo<CR>
 
+"show current colors :hi
+hi IncSearch cterm=NONE ctermfg=grey ctermbg=blue
+" purple for highlight hits
+" highlight Search guibg='Purple' guifg='NONE'
+hi Visual  guifg=#000000 guibg=#FFFFFF gui=none
 "allows Highlight plugin to save conf
 "set viminfo^=!
 " % - restores buffers between sessions
 "set viminfo=!,%,<800,'10,/50,:100,h,f0,n~/.vim/cache/.viminfo
-set viminfo=!,<800,'10,/50,:100,h,f0,n~/.config/nvim/cache/.viminfo
+if !has('nvim')
+  set viminfo=!,<800,'10,/50,:100,h,f0,n~/.vim/cache/.viminfo
+elseif has('nvim')
+  set viminfo=!,<800,'10,/50,:100,h,f0,n~/.config/nvim/cache/.viminfo
+endif
 
 
 " autocmd TextYankPost * if v:event.operator is 'y' && v:event.regname is '' | OSCYankReg " | endif
@@ -174,24 +584,131 @@ let g:content = "%"
 " call g:quickmenu#append('LangSDef', 'call LanguageClient#textDocument_definition()', '')
 " call g:quickmenu#append('LangSCaller', "call LanguageClient#findLocations({'method':'$ccls/call'})", '')
 " call g:quickmenu#append('TraceHide', 'call TraceHide("SIP\ Signalling\\|Conversation*\\|CallView*")', '')
+""" LSP CONFIG
+"
+function! EnsureDirExists (dir)
+  if !isdirectory(a:dir)
+    if exists("*mkdir")
+      call mkdir(a:dir,'p')
+      echo "Created directory: " . a:dir
+    else
+      echo "Please create directory: " . a:dir
+    endif
+  endif
+endfunction
+" if ( g:lsp_cl == "neocl" )
+  " let g:execMenu = {
+    " \ "LangServer Menu":           "call LanguageClient_contextMenu()",
+    " \ "LangServer Hover":          "call LanguageClient#textDocument_hover()",
+    " \ "LangServer Implementation": "call LanguageClient#textDocument_implementation()",
+    " \ "LangServer References":     "call LanguageClient#textDocument_references()",
+    " \ "LangServer TypeDef":        "call LanguageClient#textDocument_typeDefinition()",
+    " \ "LangServer Definition":     "call LanguageClient#textDocument_definition()",
+    " \ "TraceHide":                 "call TraceHide('SIP\ Signalling\\|Conversation*\\|CallView*')",
+    " \ "LangServer Caller":         "call LanguageClient#findLocations({\'method\':\'$ccls/call\'})",
+    " \ "Cscope callers":            "call CScopeExec(\"c\")",
+    " \ "Cscope ref1":               "call CScopeExec(\"e\")",
+    " \ "Cscope ref2":               "call CScopeExec(\"t\")",
+    " \ "Cscope decl":               "call CScopeExec(\"s\")",
+    " \}
+" 
+" 
+  " let g:LanguageClient_diagnosticsEnable=0
+  " let g:LanguageClient_selectionUI="quickfix"
+  " let g:LanguageClient_loadSettings = 1 " Use an absolute configuration path if you want system-wide settings
+  " " let g:LanguageClient_settingsPath = '/home/YOUR_USERNAME/.config/nvim/settings.json'
+  " " https://github.com/autozimu/LanguageClient-neovim/issues/379 LSP snippet is not supported
+  " let g:LanguageClient_hasSnippetSupport = 0
+  " let g:LanguageClient_hoverPreview="Always"
+" 
+  " if ( g:user_name == "pc" )
+    " call EnsureDirExists("/home/pc/tools/cclsCache/")
+    " let g:LanguageClient_serverCommands = {
+      " \ 'cpp': ['ccls', '-init={"compilationDatabaseCommand":"","compilationDatabaseDirectory":"","cache":{"directory":"/home/pc/tools/cclsCache/"}}', '--log-file=/tmp/ccls.log' ],
+      " \ 'c': ['ccls', '-init={"compilationDatabaseCommand":"","compilationDatabaseDirectory":"","cache":{"directory":"/home/pc/tools/cclsCache/"}}', '--log-file=/tmp/ccls.log' ]
+    " \ }
+  " else
+    " call EnsureDirExists("/home/km000057/HD0/tools/ccls2/vimcache/")
+    " let g:LanguageClient_serverCommands = {
+      " \ 'cpp': ['ccls', '-init={"compilationDatabaseCommand":"","compilationDatabaseDirectory":"","cache":{"directory":"/home/km000057/HD0/tools/ccls2/vimcache/"}}', '--log-file=/tmp/ccls.log' ]
+      " \ 'c': ['ccls', '-init={"compilationDatabaseCommand":"","compilationDatabaseDirectory":"","cache":{"directory":"/home/km000057/HD0/tools/ccls2/vimcache/"}}', '--log-file=/tmp/ccls.log' ],
+    " \ }
+  " endif
+" else
+  " let g:execMenu = {
+    " \ "Lsp References":     "LspReferences",
+    " \ "Lsp Declaration":    "LspDeclaration",
+    " \ "Lsp Definition":     "LspDefinition",
+    " \ "Lsp PeekDef":        "LspPeekDefinition",
+    " \ "Lsp PeekDeclar":     "LspPeekDeclaration",
+    " \ "TraceHide":          "call TraceHide('SIP\ Signalling\\|Conversation*\\|CallView*')",
+    " \ "Cscope callers":            "call CScopeExec(\"c\")",
+    " \ "Cscope ref1":               "call CScopeExec(\"e\")",
+    " \ "Cscope ref2":               "call CScopeExec(\"t\")",
+    " \ "Cscope decl":               "call CScopeExec(\"s\")",
+    " \ "Lsp Hover":          "LspHover",
+    " \}
+  " function! s:on_lsp_buffer_enabled() abort
+      " " setlocal omnifunc=lsp#complete
+      " " setlocal signcolumn=yes
+      " " if exists('+tagfunc') | setlocal tagfunc=lsp#tagfunc | endif
+      " " nmap <buffer> gd <plug>(lsp-definition)
+      " " nmap <buffer> gs <plug>(lsp-document-symbol-search)
+      " " nmap <buffer> gS <plug>(lsp-workspace-symbol-search)
+      " " nmap <buffer> gr <plug>(lsp-references)
+      " " nmap <buffer> gi <plug>(lsp-implementation)
+      " " nmap <buffer> gt <plug>(lsp-type-definition)
+      " " nmap <buffer> <leader>rn <plug>(lsp-rename)
+      " " nmap <buffer> [g <plug>(lsp-previous-diagnostic)
+      " " nmap <buffer> ]g <plug>(lsp-next-diagnostic)
+      " " nmap <buffer> K <plug>(lsp-hover)
+      " " inoremap <buffer> <expr><c-f> lsp#scroll(+4)
+      " " inoremap <buffer> <expr><c-d> lsp#scroll(-4)
+      " let g:lsp_fold_enabled = 0
+      " let g:lsp_document_highlight_enabled = 0
+      " let g:lsp_diagnostics_enabled = 0
+      " let g:lsp_format_sync_timeout = 200
+      " " autocmd! BufWritePre *.rs,*.go call execute('LspDocumentFormatSync')
+" 
+      " " refer to doc to add more commands
+  " endfunction
+" 
+  " let g:lsp_fold_enabled = 0
+  " let g:lsp_document_highlight_enabled = 0
+  " let g:lsp_diagnostics_enabled = 0
+  " let g:lsp_format_sync_timeout = 200
+" 
+  " if ( g:user_name == "pc" )
+    " call EnsureDirExists("/home/pc/tools/cclsCache2")
+    " if executable('ccls')
+       " au User lsp_setup call lsp#register_server({
+          " \ 'name': 'ccls',
+          " \ 'cmd': {server_info->['ccls']},
+          " \ 'root_uri': {server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), 'compile_commands.json'))},
+          " \ 'initialization_options': { 'cache': {'directory': '/home/pc/tools/cclsCache2' }},
+          " \ 'whitelist': ['c', 'cpp', 'objc', 'objcpp', 'cc'],
+          " \ 'allowlist': ['c', 'cpp', 'objc', 'objcpp', 'cc'],
+          " \ })
+    " endif
+  " else
+    " call EnsureDirExists("/home/km000057/tools/ccls/Release/cacheVimLsp")
+    " if executable('ccls')
+       " au User lsp_setup call lsp#register_server({
+          " \ 'name': 'ccls',
+          " \ 'cmd': {server_info->['ccls']},
+          " \ 'root_uri': {server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), 'compile_commands.json'))},
+          " \ 'initialization_options': { 'cache': {'directory': '/home/km000057/tools/ccls/Release/cacheVimLsp' }},
+          " \ 'whitelist': ['c', 'cpp', 'objc', 'objcpp', 'cc'],
+          " \ 'allowlist': ['c', 'cpp', 'objc', 'objcpp', 'cc'],
+          " \ })
+    " endif
+" 
+  " endif
+" endif
 
-let g:execMenu = {
-  \ "LangServer Menu":           "call LanguageClient_contextMenu()",
-  \ "LangServer Hover":          "call LanguageClient#textDocument_hover()",
-  \ "LangServer Implementation": "call LanguageClient#textDocument_implementation()",
-  \ "LangServer References":     "call LanguageClient#textDocument_references()",
-  \ "LangServer TypeDef":        "call LanguageClient#textDocument_typeDefinition()",
-  \ "LangServer Definition":     "call LanguageClient#textDocument_definition()",
-  \ "TraceHide":                 "call TraceHide('SIP\ Signalling\\|Conversation*\\|CallView*')",
-  \ "LangServer Caller":         "call LanguageClient#findLocations({\'method\':\'$ccls/call\'})",
-  \ "Cscope callers":            "call CScopeExec(\"c\")",
-  \ "Cscope ref1":               "call CScopeExec(\"e\")",
-  \ "Cscope ref2":               "call CScopeExec(\"t\")",
-  \ "Cscope decl":               "call CScopeExec(\"s\")",
-  \}
 
 function ShowExecMenu()
-  call fzf#run({'source':keys(g:execMenu), 'down': '30%', 'sink': function('ExecMenuSelection')})
+  call fzf#run({'source':keys(g:execMenu), 'down': '30%', 'sink': function('ExecMenuSelection'), 'options':['--no-sort']})
 endfunction
 
 function ExecMenuSelection(expr)
@@ -232,37 +749,6 @@ endfunction
 " nn <silent> xf :call LanguageClient#findLocations({'method':'$ccls/member','kind':3})<cr>
 " " member variables / variables in a namespace
 " nn <silent> xm :call LanguageClient#findLocations({'method':'$ccls/member'})<cr>
-let g:LanguageClient_diagnosticsEnable=0
-let g:LanguageClient_selectionUI="quickfix"
-" let g:clighter8_libclang_path="/usr/lib/llvm-6.0/lib/libclang.so"
-
-    " \ 'cpp': ['ccls', '--log-file=/tmp/cc.log --init={"initialization_options": { "cache": {"directory": "/home/pc/tools/cclsCache" }}}'],
-    " \ 'cpp': ['ccls', --log-file=/tmp/cc.log --init={'initialization_options': { 'cache': {'directory': '/home/km000057/tools/ccls/Release/cache' }}}'],
-    " \ 'cpp': ['ccls', '-init={"initializationOptions": {"cache": {"directory": "/home/pc/tools/cclsCache/"},"cacheFormat": "json"}}','-log-file=/tmp/ccc.log']
-let g:LanguageClient_serverCommands = {
-      \ 'cpp': ['ccls', '-init={"compilationDatabaseCommand":"","compilationDatabaseDirectory":"","cache":{"directory":"/home/pc/tools/cclsCache/"}}', '--log-file=/tmp/ccls.log' ]
-    \ }
-" let g:LanguageClient_serverCommands = {
-    " \ 'c': ['ccls', '--init={"initialization_options": { "cache": {"directory": "/home/pc/tools/cclsCache" }}}'],
-    " \ 'cpp': ['ccls', '--log-file=/tmp/cc.log --init={"initialization_options": { "cache": {"directory": "/home/pc/tools/cclsCache" }}}'],
-    " \ 'cuda': ['ccls', '--log-file=/tmp/cc.log'],
-    " \ 'objc': ['ccls', '--log-file=/tmp/cc.log'],
-    " \ }
-
- " let g:LanguageClient_serverCommands = {
-            " \ 'c':   ['cquery', '--log-file=/tmp/vim-cquery.log',
-            " \         '--init={"cacheDirectory":"$HOME/.cquery-cache"}'],
-            " \ 'cpp': ['cquery', '--log-file=/tmp/vim-cquery.log',
-            " \         '--init={"cacheDirectory":"$HOME/.cquery-cache"}'],
-            " \ }
-" 
-" 
-let g:LanguageClient_loadSettings = 1 " Use an absolute configuration path if you want system-wide settings
-" let g:LanguageClient_settingsPath = '/home/YOUR_USERNAME/.config/nvim/settings.json'
-" https://github.com/autozimu/LanguageClient-neovim/issues/379 LSP snippet is not supported
-let g:LanguageClient_hasSnippetSupport = 0
-
-let g:LanguageClient_hoverPreview="Always"
 "allow you to move freely in visual block mode
 set virtualedit=block
 
@@ -284,15 +770,15 @@ xnoremap # :<C-u>call <SID>VSetSearch('?')<CR>?<C-R>=@/<CR><CR>
 "}}}
 
 " yankring turn off default setup
-let g:yankring_paste_v_bkey = ''
-let g:yankring_paste_v_akey = ''
-let g:yankring_paste_n_bkey = ''
-let g:yankring_paste_n_akey = ''
-let g:yankring_paste_v_key = ''
-let g:yankring_manage_numbered_reg = 0
-let g:yankring_clipboard_monitor = 0
-let g:yankring_paste_check_default_buffer = 0
-let g:yankring_zap_keys = ''
+" let g:yankring_paste_v_bkey = ''
+" let g:yankring_paste_v_akey = ''
+" let g:yankring_paste_n_bkey = ''
+" let g:yankring_paste_n_akey = ''
+" let g:yankring_paste_v_key = ''
+" let g:yankring_manage_numbered_reg = 0
+" let g:yankring_clipboard_monitor = 0
+" let g:yankring_paste_check_default_buffer = 0
+" let g:yankring_zap_keys = ''
 
 
 "##########################
@@ -437,6 +923,9 @@ let g:my_db_path="~/GIT/mainline/"
 " similar to \s with cscope
 "
 "##########################
+"
+"GO TO DEF C-]
+"GO BACK C-t
 " rules for loading tags
 let g:currentTagFilePath=""
 let g:lspLoaded=""
@@ -468,43 +957,24 @@ function! LoadTagsFile(path)
   " endif
   " exec LanguageClientStart"
 endfunction
-" if executable('cquery')
-   " au User lsp_setup call lsp#register_server({
-      " \ 'name': 'cquery',
-      " \ 'cmd': {server_info->['cquery']},
-      " \ 'root_uri': {server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), 'compile_commands.json'))},
-      " \ 'initialization_options': { 'cacheDirectory': '/home/km000057/tools/cquery/build/release/cache' },
-      " \ 'whitelist': ['c', 'cpp', 'objc', 'objcpp', 'cc'],
-      " \ })
-" endif
-" if executable('ccls')
-   " au User lsp_setup call lsp#register_server({
-      " \ 'name': 'ccls',
-      " \ 'cmd': {server_info->['ccls']},
-      " \ 'root_uri': {server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), 'compile_commands.json'))},
-      " \ 'initialization_options': { 'cache': {'directory': '/home/km000057/tools/ccls/Release/cache' }},
-      " \ 'whitelist': ['c', 'cpp', 'objc', 'objcpp', 'cc'],
-      " \ })
-" endif
-
 
 "################################################
 " YouCompleteMe setup
-let g:ycm_min_num_of_chars_for_completion = 2
-let g:ycm_auto_trigger = 1
-let g:ycm_collect_identifiers_from_tags_files = 0
-let g:ycm_seed_identifiers_with_syntax = 1 " Completion for programming language's keyword
-let g:ycm_complete_in_comments = 1 " Completion in comments
-" let g:ycm_complete_in_strings = 1 " Completion in string
-let g:ycm_add_preview_to_completeopt = 1
-"let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
-let g:ycm_global_ycm_extra_conf = '~/.config/nvim/bundle/.ycm_extra_conf.py'
-
-let g:ycm_confirm_extra_conf = 0
-let g:ycm_key_list_select_completion = ['<TAB>','<Down>']
-let g:ycm_key_list_previous_completion=['<Up>']
-let g:ycm_autoclose_preview_window_after_insertion = 1
-let g:ycm_autoclose_preview_window_after_completion = 0
+" let g:ycm_min_num_of_chars_for_completion = 2
+" let g:ycm_auto_trigger = 1
+" let g:ycm_collect_identifiers_from_tags_files = 0
+" let g:ycm_seed_identifiers_with_syntax = 1 " Completion for programming language's keyword
+" let g:ycm_complete_in_comments = 1 " Completion in comments
+" " let g:ycm_complete_in_strings = 1 " Completion in string
+" let g:ycm_add_preview_to_completeopt = 1
+" "let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
+" let g:ycm_global_ycm_extra_conf = '~/.config/nvim/bundle/.ycm_extra_conf.py'
+" 
+" let g:ycm_confirm_extra_conf = 0
+" let g:ycm_key_list_select_completion = ['<TAB>','<Down>']
+" let g:ycm_key_list_previous_completion=['<Up>']
+" let g:ycm_autoclose_preview_window_after_insertion = 1
+" let g:ycm_autoclose_preview_window_after_completion = 0
 "turn off YMC 
 "nnoremap <leader>y :let g:ycm_auto_trigger=0<CR>                " turn off YCM
 "nnoremap <leader>Y :let g:ycm_auto_trigger=1<CR>                "turn on YCM
@@ -514,7 +984,6 @@ let g:ycm_autoclose_preview_window_after_completion = 0
 
 "################################################
 
-set completeopt=menu,menuone,preview,noselect,noinsert
 
 
 "" SNIPETS
@@ -603,8 +1072,6 @@ let g:yankring_replace_n_pkey = '<C-p>'
 let g:yankring_replace_n_nkey = '<C-o>'
 let g:ctrlp_map = ''
 let g:ctrlp_cmd = 'CtrlP'
-noremap <C-o> :YRReplace 1 p<CR>
-nnoremap ,p :YRPop<CR>
 "map your keys
 "noremap <C-a> :CtrlP /home/km000057/GIT/mainline/vobs/Opera_Infrastructure_Services/Media/<CR>
 " noremap <C-z> :CtrlPBuffer<CR>
@@ -654,11 +1121,16 @@ nmap <F6> :Clap yanks<CR>
 nmap <F7> :call asyncrun#quickfix_toggle(9)<CR>
 nmap <F8> :TagbarToggle<CR>
 " nmap <F9> :MundoToggle<CR>
-nmap <F9> :call LanguageClient#textDocument_hover()<CR>
-nnoremap <silent>,hc :call LanguageClient#textDocument_hover()<CR>
+nmap <F9> :lua vim.lsp.buf.hover()<CR>
+nnoremap <silent>,hh :lua vim.lsp.buf.hover()<CR>
+nnoremap <silent>,dd :lua vim.lsp.buf.definition()<CR>
+nnoremap <silent>,rr ::Telescope lsp_references<CR>
+" nnoremap <silent>,rr :lua vim.lsp.buf.references()<CR>
+nnoremap <silent>,ii :lua vim.lsp.buf.implementation()<CR>
+nnoremap <silent>,bb :call FuzzyBrowse()<CR>
 nmap <silent>,hj <plug>(YCMHover)
 nmap <F10> :YRShow<CR>
-nnoremap <silent> ,yy :YRShow<CR>
+nnoremap <silent> ,yy :Clap yanks<CR>
 " noremap <silent><F11> :call quickmenu#toggle(0)<cr>
 noremap <silent><F11> :call ShowExecMenu()<cr>
 nnoremap <silent>,mm :call ShowExecMenu()<cr>
@@ -675,7 +1147,8 @@ tnoremap <F12> <C-\><C-n>:Nuake<CR>
 " tnoremap <F12> <C-\><C-n>:TermExec cmd='cd %:p:h' size=15<CR>
 nnoremap <silent> ,tt :Nuake<CR>
 nnoremap <silent> ,y :Clap yanks<CR>
-nnoremap <silent> ,,y :YRShow<CR>
+nnoremap ,p :norm "0p<CR>
+vnoremap ,p :norm "0p<CR>
 nnoremap gp `[v`]
 " nmap ,rr  :AsyncRun buildParse.sh mainline 34 sip 1 %:p:h<CR>:copen 10<CR>
 " nmap ,ll  :let g:phones="121 122 123" \| let g:branch="mainline"
@@ -690,10 +1163,10 @@ nnoremap gp `[v`]
 " vmap <C-Down> ]egv
 "
 " move line good
-nnoremap <C-Down> :m .+1<CR>==
-nnoremap <C-Up> :m .-2<CR>==
-inoremap <C-Down> <Esc>:m .+1<CR>==gi
-inoremap <C-Up> <Esc>:m .-2<CR>==gi
+nnoremap <C-A-Down> :m .+1<CR>==
+nnoremap <C-A-Up> :m .-2<CR>==
+inoremap <C-A-Down> <Esc>:m .+1<CR>==gi
+inoremap <C-A-Up> <Esc>:m .-2<CR>==gi
 " vnoremap <C-Down> :m '>+1<CR>gv=gv
 " vnoremap <C-Up> :m '<-2<CR>gv=gv
 
@@ -708,6 +1181,7 @@ vmap <C-Right>  <Plug>SchleppRight
 nnoremap <A-Left> <C-w>h
 nnoremap <A-Right> <C-w>l
 nnoremap <A-Up> <C-w>k
+tnoremap <A-Up> <C-\><C-N><C-w>k
 nnoremap <A-Down> <C-w>j
 
 " nnoremap <C-PageUp> gt
@@ -720,24 +1194,79 @@ nnoremap <silent> ,nn :enew<CR>
 nnoremap <silent> ,ne :enew<CR>
 
 
-" nnoremap <silent> ,ld :LspDefinition<CR>
-" nnoremap <silent> ,lh :LspHover<CR>
-" nnoremap <silent> ,ls :LspReferences<CR>
-" nnoremap <silent> ,lc :LspCqueryCallers<CR>
 " rename files from quicfix window
 nnoremap <silent> ,qr :call QfToRename()<CR>
-nnoremap <silent> ,qf :CodeQueryFilter !  
+nnoremap <silent> ,qf :call QFFilter("")
 
-" nnoremap <silent> ,lh call LanguageClient#textDocument_hover()<CR>
+function! QFFilter(args) abort
+    if &filetype !=# 'qf'
+      echom " not a qf window"
+      copen
+    endif
+    let args = split(a:args, ' ')
+    if len(args) > 1
+        let query = args[1]
+        let reverse_filter = 1
+    else
+        let query = args[0]
+        let reverse_filter = 0
+    endif
+    echom query
+
+    let results = getqflist()
+    for d in results
+        if reverse_filter
+            if bufname(d['bufnr']) =~ query || d['text'] =~ query
+                call remove(results, index(results, d))
+            endif
+        else
+            if bufname(d['bufnr']) !~ query && d['text'] !~ query
+                call remove(results, index(results, d))
+            endif
+        endif
+    endfor
+    call setqflist(results)
+    call QFPrettify(results)
+endfunction
+
+function QFPrettify(results) abort
+    " unlock qf to make changes
+    setlocal modifiable
+    setlocal nolist
+    setlocal nowrap
+
+    " delete all the text in qf
+    silent %delete
+
+    " insert new text with pretty layout
+    let max_fn_len = 0
+    let max_lnum_len = 0
+    for d in a:results
+        let d['filename'] = bufname(d['bufnr'])
+        let max_fn_len = max([max_fn_len, len(d['filename'])])
+        let max_lnum_len = max([max_lnum_len, len(d['lnum'])])
+    endfor
+    let reasonable_max_len = 60
+    let max_fn_len = min([max_fn_len, reasonable_max_len])
+    let qf_format = '"%-' . max_fn_len . 'S | %' . max_lnum_len . 'S | %s"'
+    let evaluating_str = 'printf(' . qf_format .
+                    \ ', v:val["filename"], v:val["lnum"], v:val["text"])'
+    call append('0', map(a:results, evaluating_str))
+
+    " delete empty line
+    global/^$/delete
+
+    " put the cursor back
+    normal! gg
+
+    " lock qf again
+    setlocal nomodifiable
+    setlocal nomodified
+endfunction
+
 " nnoremap <silent> ,lh call LanguageClient#findLocations({'method':'$ccls/call'})<CR>
 
 
-" nnoremap <silent> ,cs :CodeQuery Symbol<CR>
-" nnoremap <silent> ,cc :CodeQuery Call<CR>
-" nnoremap <silent> ,cd :CodeQuery Definition<CR>
-"nnoremap <silent> ,cc :call ToggleComment()<CR>
-"vnoremap <silent> ,cu :call ToggleComment()<CR>
-" noremap  <silent> ,cc :call ToggleComment()<CR>
 noremap  <silent> ,cx :call DoToggleComment()<CR>
 noremap  <silent> ,cv :call UnToggleComment()<CR>
 " :c-r c-w = paste
@@ -790,7 +1319,6 @@ tnoremap <expr> <A-r> '<C-\><C-N>"'.nr2char(getchar()).'pi'
 
 function BuffModified()
     let g:anyUnsavedBuffer = join(filter(range(1,bufnr('$')),'getbufvar(v:val,"&modified")'),"_")
-    echom "xx -  -> anyUnsavedBuffer " . g:anyUnsavedBuffer . "<<"
 endfunction
 
 augroup ModBuffer
@@ -818,7 +1346,6 @@ augroup END
 
 "#########################################
 "configure plugins
-
 
 
 
@@ -1014,11 +1541,12 @@ augroup _fzf
 augroup END
 
 let $FZF_DEFAULT_COMMAND = 'rg --files --follow -g "!{.git,node_modules}/*" 2>/dev/null'
-
+let $FZF_DEFAULT_OPTS='--preview "bat --theme=\"OneHalfDark\" --color=bg+:#293739,bg:#1B1D1E,spinner:#E6DB74,hl:#E6DB74,fg:#F8F8F2,pointer:#A6E22E,info:#A6E22E,fg+:#F8F8F2,marker:#F92672,header:#7E8E91,prompt:#F92672,hl+:#E6DB74'
 let g:fzf_preview_window="right:30%"
 
 " let g:fzf_preview_window="right:30%"
 let g:fzf_preview_window=[]
+let g:fzf_layout = { 'down': '~40%' }
 " let g:ycm_register_as_syntastic_checker = 1 "default 1
 " let g:Show_diagnostics_ui = 1 "default 1
 " 
@@ -1103,12 +1631,21 @@ let g:ycm_min_num_of_chars_for_completion = 3
 let g:ycm_auto_trigger = 1
 " You can use built-in profiling support: after launching vim do
 " 
-" :profile start profile.log
-" :profile func *
-" :profile file *
-" " At this point do slow actions
-" :profile pause
-" :noautocmd qall!
+let g:profileStatus=""
+function! ProfileToggle()
+  if ( empty(g:profileStatus) )
+    let g:profileStatus="r"
+    echom "profiling start"
+    execute "profile start rfile.log"
+    execute "profile func *"
+    execute "profile file *"
+  else
+    let g:profileStatus=""
+    echom "profiling stop"
+    execute "profile pause"
+    " exec "noautocmd qall!"
+  endif
+endfunction
 " @subjectego :set more | verbose function {function_name} will show you function contents and where it is located.
 
 "make cursor move visible?
@@ -1153,6 +1690,10 @@ endif
 
 "
   
+" send events to vim from kitty
+set mouse=a
+" better pasting copied text
+set paste
 "
 "
 " :profile start profile.log
@@ -1305,24 +1846,14 @@ set formatoptions+=j " Delete comment character when joining commented lines
 " 7 or f: Find this file
 " 8 or i: Find files #including this file
 " cscope
-let g:csPath=""
 function! Cscope(option, query)
-  let color = '{ x = $1; $1 = ""; z = $3; $3 = ""; printf "\033[34m%s\033[0m:\033[31m%s\033[0m\011\033[37m%s\033[0m\n", x,z,$0; }'
-  " let l:path = expand('%:p:h')
-  " let l:path = substitute(l:path,'vobs.*','','')
-  " let l:cspath = l:path . "/vobs/cscope.files"
-  echom "query " . a:query
-  echom "path " . g:csPath
-  echom "option " . a:option
-  echom "path " . g:csPath
   let opts = {
-  \ 'source':  "cscope -d -f " . g:csPath . " " . " -L " . "-" . a:option . " " . a:query . " | awk '" . color . "'",
+  \ 'source':  "cscope -d -f " . g:csPath . " " . " -L . a:option . " " . a:query,
   \ 'options': ['--ansi', '--prompt', '> ',
   \             '--multi', '--bind', 'alt-a:select-all,alt-d:deselect-all',
   \             '--color', 'fg:188,fg+:222,bg+:#3a3a3a,hl+:104'],
   \ 'down': '40%'
   \ }
-  echom "opts " . l:opts
   " function! opts.sink(lines)
     " let data = split(a:lines)
     " let file = split(data[0], ":")
@@ -1402,3 +1933,6 @@ let g:ycm_filetype_whitelist = {
 			\ "zimbu":1,
 			\ "python":1,
 			\ }
+set autoindent
+
+

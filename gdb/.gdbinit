@@ -818,30 +818,30 @@ define framei
     info args
     info locals
 end
-set solib-absolute-prefix .
-set solib-search-path ./Opera_Deploy/
-set debug-file-directory ./usr/lib/debug/
-set substitute-path /vobs ~//praceData/GIT/mainline//vobs
+# set solib-absolute-prefix .
+# set solib-search-path ./Opera_Deploy/
+# set debug-file-directory ./usr/lib/debug/
+# set substitute-path /vobs ~//praceData/GIT/mainline//vobs
 set print object on
 set print elements 0
-directory ~//praceData/GIT/mainline//vobs/Opera_Framework/svcConfig/
-directory ~//praceData/GIT/mainline//vobs/Opera_Framework/svcExecutor/
-directory ~//praceData/GIT/mainline//vobs/Opera_Framework/CommsChannel/
-directory ~//praceData/GIT/mainline//vobs/Opera_Platform_Linux/GPAL/OSWrappers/
-directory ~//praceData/GIT/mainline//vobs/Opera_Infrastructure_Services/HealthService/
-directory ~//praceData/GIT/mainline//vobs/Opera_Framework/CommsChannel/
-directory ~//praceData/GIT/mainline//vobs/Opera_Platform_Linux/GPAL/GPALMedia/audioBCM/
-directory ~//praceData/GIT/mainline//vobs/Opera_Infrastructure_Services/Media/VoiceEngine/
-directory ~//praceData/GIT/mainline//vobs/Opera_CPP_Applications/Phonelets/LocalAdmin/
-directory ~//praceData/GIT/mainline//vobs/Opera_Business_Services/CommunicationsService/SIP/Signalling/
-directory ~//praceData/GIT/mainline//vobs/Opera_Infrastructure_Services/Media/MediaControlService/
-directory ~//praceData/GIT/mainline//vobs/Opera_Infrastructure_Services/Media/SRTP/
-directory ~//praceData/GIT/mainline//vobs/Opera_Infrastructure_Services/SecurityLogService/
-directory ~//praceData/GIT/mainline//vobs/Opera_CPP_Appl_Fwk/ApplicationFramework/Translator/
-directory ~//praceData/GIT/mainline//vobs/Opera_CPP_Appl_Fwk/ApplicationFramework/DisplayAPI/MEG/
-directory ~//praceData/GIT/mainline//vobs/Opera_CPP_Applications/Phonelets/CallView/
-directory ~//praceData/GIT/mainline//vobs/Opera_Framework/ExceptionHandling/
-directory ~//praceData/GIT/mainline//vobs/Opera_CPP_Applications/Phonelets/CallViewHFA/
-directory ~//praceData/GIT/mainline//vobs/Opera_Presentation_QT/QtWidgets/VideoWidget/
-directory ~//praceData/GIT/mainline//vobs/Opera_CPP_Appl_Fwk/ApplicationFramework/DisplayAPI/Qt/
+# directory ~//praceData/GIT/mainline//vobs/Opera_Framework/svcConfig/
+# directory ~//praceData/GIT/mainline//vobs/Opera_Framework/svcExecutor/
+# directory ~//praceData/GIT/mainline//vobs/Opera_Framework/CommsChannel/
+# directory ~//praceData/GIT/mainline//vobs/Opera_Platform_Linux/GPAL/OSWrappers/
+# directory ~//praceData/GIT/mainline//vobs/Opera_Infrastructure_Services/HealthService/
+# directory ~//praceData/GIT/mainline//vobs/Opera_Framework/CommsChannel/
+# directory ~//praceData/GIT/mainline//vobs/Opera_Platform_Linux/GPAL/GPALMedia/audioBCM/
+# directory ~//praceData/GIT/mainline//vobs/Opera_Infrastructure_Services/Media/VoiceEngine/
+# directory ~//praceData/GIT/mainline//vobs/Opera_CPP_Applications/Phonelets/LocalAdmin/
+# directory ~//praceData/GIT/mainline//vobs/Opera_Business_Services/CommunicationsService/SIP/Signalling/
+# directory ~//praceData/GIT/mainline//vobs/Opera_Infrastructure_Services/Media/MediaControlService/
+# directory ~//praceData/GIT/mainline//vobs/Opera_Infrastructure_Services/Media/SRTP/
+# directory ~//praceData/GIT/mainline//vobs/Opera_Infrastructure_Services/SecurityLogService/
+# directory ~//praceData/GIT/mainline//vobs/Opera_CPP_Appl_Fwk/ApplicationFramework/Translator/
+# directory ~//praceData/GIT/mainline//vobs/Opera_CPP_Appl_Fwk/ApplicationFramework/DisplayAPI/MEG/
+# directory ~//praceData/GIT/mainline//vobs/Opera_CPP_Applications/Phonelets/CallView/
+# directory ~//praceData/GIT/mainline//vobs/Opera_Framework/ExceptionHandling/
+# directory ~//praceData/GIT/mainline//vobs/Opera_CPP_Applications/Phonelets/CallViewHFA/
+# directory ~//praceData/GIT/mainline//vobs/Opera_Presentation_QT/QtWidgets/VideoWidget/
+# directory ~//praceData/GIT/mainline//vobs/Opera_CPP_Appl_Fwk/ApplicationFramework/DisplayAPI/Qt/
 set backtrace limit unlimited

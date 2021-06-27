@@ -1415,7 +1415,8 @@ function! SearchBuffers(expr)
   endif
   let searchTerm = substitute( searchTerm, " ","\\\\ ", "g")
   echom "Search term " . searchTerm
-  " exe "Back! -Q " . searchTerm
+  " " exe "Back! -Q " . searchTerm
+  " exe "Back! " . searchTerm
   exe "Back! " . searchTerm
 endfunction
 
@@ -1440,7 +1441,8 @@ function! SearchPath(expr)
   endif
   let searchTerm = substitute( searchTerm, " ","\\\\ ", "g")
   " let cmd = input("",":Ack -Q " . searchTerm . " " . currentPath)
-  call feedkeys(":Ack! -Q " . searchTerm . " " . currentPath,"t")
+  " call feedkeys(":Ack! -Q " . searchTerm . " " . currentPath,"t")
+  call feedkeys(":Ack! " . searchTerm . " " . currentPath,"t")
 endfunction
 
 

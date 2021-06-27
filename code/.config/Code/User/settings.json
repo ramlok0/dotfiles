@@ -1,0 +1,136 @@
+{
+    "files.exclude": {
+        "**/.*": true,
+        "**/bin": true,
+        "**/exe": true,
+        "**/Opera_Tide" : true,
+        "**/Opera_DevTools" : true,
+        "**/Opera_Build" : true
+    },
+   //////////"C_Cpp.autocomplete": "Default",
+   "C_Cpp.autocomplete": "Disabled",
+   "C_Cpp.formatting": "Disabled",
+   "C_Cpp.errorSquiggles": "Disabled",
+   "C_Cpp.intelliSenseEngine": "Disabled",
+
+   //"C_Cpp.formatting": "Disabled",
+   // "C_Cpp.errorSquiggles": "Disabled",
+   //////////"C_Cpp.intelliSenseEngine": "Default",
+    "editor.detectIndentation": true,
+    "editor.tabSize": 8,
+    // "editor.insertSpaces": true,
+    "workbench.statusBar.visible": true,
+    "files.eol": "\n",
+    "editor.renderWhitespace": "all",
+    "editor.renderControlCharacters": false,
+    "editor.minimap.enabled": false,
+    "gitlens.advanced.messages": {
+        "suppressShowKeyBindingsNotice": true
+    },
+    //"workbench.colorTheme": "Visual Studio Light",
+    "workbench.quickOpen.preserveInput": false,
+    "breadcrumbs.enabled": true,
+    "files.autoSave": "off",
+    "C_Cpp.default.intelliSenseMode": "clang-x64",
+    "C_Cpp.default.cppStandard": "c++98",
+    "gitlens.views.repositories.files.layout": "tree",
+    "window.zoomLevel": 0,
+    "folder-indexing.exclude":
+    [       "**/.*",
+            "**/bin",
+            "**/exe",
+            "**/Opera_Tide",
+            "**/Opera_DevTools",
+            "**/Opera_Build"
+        ],
+    "folder-indexing.searchMode":"fullpath",
+
+
+    "diffEditor.ignoreTrimWhitespace": false,
+    "telemetry.enableCrashReporter": false,
+    "telemetry.enableTelemetry": false,
+    "remote.SSH.configFile": "/home/pc/praceData/doc/doc/ssh/vscode.config",
+    //"ccls.cache.directory": "${workspaceFolder}/.ccls-cache/",
+    //"ccls.cache.hierarchicalPath": true,
+    //"ccls.launch.command": "/media/km000057/HD0/tools/ccls2/ccls/Release/ccls",
+    "ccls.launch.command": "ccls",
+    "ccls.launch.args": ["--log-file=/tmp/vsccls.log"],
+    "ccls.cache.directory": "../.vscode_cache",
+    "ccls.misc.compilationDatabaseDirectory": "../.compile_commands",
+    //"ccls.cache.directory": "/home/km000057/SPACIOUS/smainline/.vscode_cache",
+    //"ccls.misc.compilationDatabaseDirectory": "/home/km000057/SPACIOUS/smainline/.compile_commands",
+    "ccls.index.initialWhitelist": [".cpp"],
+    "ccls.completion.include.suffixWhitelist": [
+        ".h",
+        ".cpp",
+        ".c"
+    ],
+    "ccls.codeLens.enabled": true,
+    "ccls.codeLens.localVariables": true,
+    "ccls.index.whitelist": [".h", ".cpp"],
+    //"ccls.highlight.function.face": ["enabled"],
+    //"ccls.highlight.type.face": ["enabled"],
+    //"ccls.highlight.variable.face": ["enabled"],
+    //"ccls.misc.compilationDatabaseDirectory": "../compile_commands.json",
+    "search.useIgnoreFiles": false,
+    "gitlens.advanced.repositorySearchDepth": 10,
+    "git.autofetchPeriod": 30,
+    "git.autoRepositoryDetection": "openEditors",
+    "git.detectSubmodulesLimit": 20,
+    "files.trimTrailingWhitespace": true,
+    "terminal.integrated.copyOnSelection": true,
+    "extensions.autoUpdate": false,
+    "extensions.autoCheckUpdates": false,
+    //"C_Cpp.autocomplete": "Disabled",
+    //"C_Cpp.formatting": "Disabled",
+    //"C_Cpp.errorSquiggles": "Disabled",
+    //"C_Cpp.intelliSenseEngine": "Disabled",
+    "files.watcherExclude": {
+        "**/.cipd/**": true,
+        "**/.clangd/**": true,
+        "**/.git/**": true,
+        "**/.**/**": true,
+        "**/node_modules/**": true,
+        "**/out/**": true,
+        "**/bin": true,
+        "**/exe": true,
+        "**/Opera_Tide" : true,
+        "**/Opera_DevTools" : true,
+        "**/Opera_Build" : true
+    },
+     //"C_Cpp.default.compileCommands": "/home/km000057/SPACIOUS/smainline/compile_commands",
+     //"C_Cpp.intelliSenseEngine": "Default",
+
+
+
+    "ccls.clang.excludeArgs": [
+
+    ],
+    //"C_Cpp.formatting": "Default",
+    //"C_Cpp.default.compilerPath": "/usr/bin/clang++",
+    //"C_Cpp.default.intelliSenseMode": "clang-x64",
+    "C_Cpp.default.compileCommands": "/home/km000057/SPACIOUS/smainline/compile_commands.json",
+    "vscode-neovim.highlightGroups.highlights": {
+
+        "Directory": "vim",
+        "IncSearch": {
+            "backgroundColor": "theme.editor.findMatchBackground",
+            "borderColor": "theme.editor.findMatchBorder"
+        },
+        "Search": {
+            "backgroundColor": "theme.editor.findMatchHighlightBackground",
+            "borderColor": "theme.editor.findMatchHighlightBorder"
+        },
+        "Visual": {
+            "backgroundColor": "theme.editor.selectionBackground"
+        },
+        "Conceal": "vim",
+        "Substitute": "vim"
+    },
+    "vscode-neovim.neovimExecutablePaths.linux": "/usr/local/bin/nvim",
+    "vscode-neovim.neovimInitVimPaths.linux": "/home/km000057/.config/nvim/init.vim",
+    "cppcheck.severity": "information",
+    "c-cpp-flylint.clang.executable": "cppcheck",
+    //"window.restoreWindows": "none"
+
+}
