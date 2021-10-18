@@ -81,14 +81,37 @@ function! TraceShowSipWith(expr)
     call TraceHighlightSIP()
 endfunction
 
+
 function! TraceOnlySip()
     echom "Test"
     setl foldmethod=expr
     setlocal foldexpr=(((getline(v:lnum)=~':\\(.\\)\\1\\{2\\}.*$')\|\|(getline(v:lnum)=~'^$')\|\|(getline(v:lnum)=~'(\\d\\{3,5}):')\|\|(getline(v:lnum)=~'^\\s'))\&\&((getline(v:lnum)!~'SIP.Messages')\&\&(getline(v:lnum+1)!~'SIP.Messages')\&\&(getline(v:lnum)!~'Packet.[IO]')))?1:0 foldmethod=expr
     setl foldminlines=0
     setl foldlevel=0
-    set foldclose=all
-    setl foldtext=""
+    ""new add preview of fold
+    function! CustomFold()
+            let folded_line_count = v:foldend - v:foldstart + 1
+            let prefix = ' ⭐️ '. folded_line_count
+            let separator = ''
+            let spaces = 0 + strlen(folded_line_count)
+
+            while spaces < 6
+                    let separator .= ' '
+                    let spaces += 1
+            endwhile
+
+            return prefix . separator . getline(v:foldstart)
+    endfunction   set foldclose=all
+    function! MyFoldText()
+        let line = getline(v:foldstart)
+        let foldedlinecount = v:foldend - v:foldstart + 1
+        return ' ⭐️ '. foldedlinecount . line
+    endfunction
+    set foldtext=MyFoldText()
+    "set foldtext=CustomFold()
+    "set fillchars=fold:\
+    "orig line below
+    "setl foldtext=""
     set fillchars=""
     call TraceHighlightSIP()
 endfunction

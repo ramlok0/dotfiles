@@ -31,11 +31,11 @@ font pango: Noto Sans Regular 11
 # exec --no-startup-id xmodmap -e 'keycode 66 = Hyper_L'
 # exec --no-startup-id xmodmap -e "add mod3 = Hyper_L"
 exec --no-startup-id setxkbmap -option caps:hyper
-exec --no-startup-id modmap -e "clear mod4"
-exec --no-startup-id modmap -e "clear mod3"
-exec --no-startup-id modmap -e 'keycode 66 = Hyper_L NoSymbol Hyper_L'
-exec --no-startup-id modmap -e "add mod3 = Hyper_L"
-exec --no-startup-id modmap -e "add mod4 = Super_L Super_R"
+exec --no-startup-id xmodmap -e "clear mod4"
+exec --no-startup-id xmodmap -e "clear mod3"
+exec --no-startup-id xmodmap -e 'keycode 66 = Hyper_L NoSymbol Hyper_L'
+exec --no-startup-id xmodmap -e "add mod3 = Hyper_L"
+exec --no-startup-id xmodmap -e "add mod4 = Super_L Super_R"
 
 # bindsym Hyper_L focus output left;workspace 99; focus
 # bindsym --release Hyper_L focus output left; workspace 2; focus
@@ -53,7 +53,7 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 ##nn
 exec --no-startup-id setxkbmap -layout us,cz -option grp:alt_shift_toggle &
 # exec --no-startup-id compton -CGbz -r 8 -o 0.2 -l -12 -t -12 --backend glx --vsync opengl --shadow-exclude 'argb && _  NET_WM_OPAQUE_REGION@:c'ompton -CGbz -r 8 -o 0.2 -l -12 -t -12 --backend glx --vsync opengl --shadow-exclude 'argb && _NET_WM_OPAQUE_REGION@:c'
-exec --no-startup-id compton  --config /home/pc/.config/compton/compton.conf
+# exec --no-startup-id compton  --config /home/pc/.config/compton/compton.conf
 # NetworkManager is the most popular way to manage wireless networks on Linux,
 # and nm-applet is a desktop environment-independent system tray GUI for it.
 ## OLD >>> exec --no-startup-id nm-applet
@@ -295,14 +295,15 @@ exec_always --no-startup-id alttab -d 1 -fg "#d58681" -bg "#4a4a4a" -frame "#eb5
 #kill window with mouse click->release
 #left button release kills window
 #https://i3wm.org/docs/userguide.html
-bindsym --release button3 kill
+bindsym --release --border  button3 kill
 bindsym --whole-window $mod+button3 kill
 bindsym --whole-window button2 [floating] kill
 # bindsym --whole-window button3+button1 [floating] kill
 bindsym $mod+q kill
-bindsym --release button4 move container to workspace number 9
+bindsym --border button4 move container to workspace number 9
+bindsym --border button5 workspace next_on_output
 # bindsym --release button4 move container to output left; focus; move container to workspace number 99
-bindsym --release button5 move container to workspace number 8
+# bindsym --release button5 move container to workspace number 8
 bindsym --release button2 move container to workspace number 9
 # bindsym --release button2 move container to scratchpad
 # bindsym $mod+Shift+minus move scratchpad
@@ -394,16 +395,27 @@ bindsym $mod+0 workspace number $ws10
 
 
 # move focused container to workspace
-bindsym $mod+Shift+1 move container to workspace number $ws1; workspace $ws1
-bindsym $mod+Shift+2 move container to workspace number $ws2; workspace $ws2
-bindsym $mod+Shift+3 move container to workspace number $ws3; workspace $ws3
-bindsym $mod+Shift+4 move container to workspace number $ws4; workspace $ws4
-bindsym $mod+Shift+5 move container to workspace number $ws5; workspace $ws5
-bindsym $mod+Shift+6 move container to workspace number $ws6; workspace $ws6
-bindsym $mod+Shift+7 move container to workspace number $ws7; workspace $ws7
-bindsym $mod+Shift+8 move container to workspace number $ws8; workspace $ws8
-bindsym $mod+Shift+9 move container to workspace number $ws9; workspace $ws9
-bindsym $mod+Shift+0 move container to workspace number $ws10; workspace $ws10
+bindsym $mod+Shift+1 move container to workspace number $ws1
+bindsym $mod+Shift+2 move container to workspace number $ws2
+bindsym $mod+Shift+3 move container to workspace number $ws3
+bindsym $mod+Shift+4 move container to workspace number $ws4
+bindsym $mod+Shift+5 move container to workspace number $ws5
+bindsym $mod+Shift+6 move container to workspace number $ws6
+bindsym $mod+Shift+7 move container to workspace number $ws7
+bindsym $mod+Shift+8 move container to workspace number $ws8
+bindsym $mod+Shift+9 move container to workspace number $ws9
+bindsym $mod+Shift+0 move container to workspace number $ws10
+
+bindsym $mod+Shift+Ctrl+1 move container to workspace number $ws1; workspace $ws1
+bindsym $mod+Shift+Ctrl+2 move container to workspace number $ws2; workspace $ws2
+bindsym $mod+Shift+Ctrl+3 move container to workspace number $ws3; workspace $ws3
+bindsym $mod+Shift+Ctrl+4 move container to workspace number $ws4; workspace $ws4
+bindsym $mod+Shift+Ctrl+5 move container to workspace number $ws5; workspace $ws5
+bindsym $mod+Shift+Ctrl+6 move container to workspace number $ws6; workspace $ws6
+bindsym $mod+Shift+Ctrl+7 move container to workspace number $ws7; workspace $ws7
+bindsym $mod+Shift+Ctrl+8 move container to workspace number $ws8; workspace $ws8
+bindsym $mod+Shift+Ctrl+9 move container to workspace number $ws9; workspace $ws9
+bindsym $mod+Shift+Ctrl+0 move container to workspace number $ws10; workspace $ws10
 
 bindsym $mod+Ctrl+1 move container to workspace number $ws1
 bindsym $mod+Ctrl+2 move container to workspace number $ws2
@@ -463,20 +475,23 @@ mode "$mode_Out" {
 
 ## NEW ^^^ ############################################################i
 
-set $mode_menu [Y]outube [S]t [T]erminal [K]odi [F]irefox [C]hrome [C[A]ja [G]vim [M]pad
+set $mode_menu [Y]outube [S]t [T]erminal [K]odi [F]irefox [C]hrome C[A]ja [G]vim [M]pad [P]ychess ch[E]ss j[D]ownload
 bindsym $mod+Menu mode "$mode_menu"
 bindsym Menu mode "$mode_menu"
 
 mode "$mode_menu" {
-    bindsym y exec --no-startup-id youtube-dl-gui &; mode default
+    bindsym c exec --no-startup-id caja --no-desktop --browser &; mode default
+    bindsym d exec --no-startup-id jdownloader2.jdownloader &; mode default
+    bindsym e exec --no-startup-id scid &; mode default
+    bindsym f exec --no-startup-id firejail firefox &; mode default
+    bindsym g exec --no-startup-id gvim &; mode default
+    bindsym h exec --no-startup-id chromium-browser --remote-debugging-port=9222 &; mode default
+    bindsym k exec --no-startup-id kodi &; mode default
+    bindsym m exec --no-startup-id mousepad &; mode default
+    bindsym p exec --no-startup-id pychess &; mode default
     bindsym s exec --no-startup-id st &; mode default
     bindsym t exec --no-startup-id kitty &; mode default
-    bindsym k exec --no-startup-id kodi &; mode default
-    bindsym f exec --no-startup-id firejail firefox &; mode default
-    bindsym h exec --no-startup-id chromium-browser &; mode default
-    bindsym c exec --no-startup-id caja --no-desktop --browser &; mode default
-    bindsym g exec --no-startup-id gvim &; mode default
-    bindsym m exec --no-startup-id mousepad &; mode default
+    bindsym y exec --no-startup-id youtube-dl-gui &; mode default
     # bindsym m exec --no-startup-id termite -t "  Conf" -r edr -e vim; mode default
     bindsym Escape mode "default"
 }
@@ -578,7 +593,7 @@ mouse_warping none
 #WINDOW EXCEPTIONS/SETUP
 
 for_window [ class="Toplevel"] floating enable, resize set 383 505
-for_window [ class="Toplevel" instance="serGameWin" ] floating enable, resize set 300 183
+for_window [ class="Toplevel" instance="serGameWin" ] floating enable, resize set 380 583
 for_window [ class="Toplevel" instance="configSerGameWin" title="Configure UCi game" ] floating enable, resize set 383 555
 # for_window [ class="Toplevel" instance="coachWin" ] floating enable, resize set 383 492
 for_window [class="Xfce4-appfinder" instance="xfce4-appfinder" title="Application Finder"] floating enable, resize set 383 520

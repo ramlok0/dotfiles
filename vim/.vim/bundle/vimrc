@@ -166,6 +166,7 @@ Plug 'glts/vim-magnum'
 Plug 'jeetsukumaran/vim-filebeagle'
 Plug 'tpope/vim-vinegar'
 Plug 'jackguo380/vim-lsp-cxx-highlight'
+Plug 'machakann/vim-swap'
 call plug#end()
 
 let g:lsp_cxx_hl_use_text_props = 1
@@ -177,6 +178,17 @@ set pyxversion=3
 
 let g:csPath=""
 let g:ycm_auto_hover=''
+
+
+" inoremap " ""<left>
+" inoremap ' ''<left>
+" inoremap ( ()<left>
+" inoremap [ []<left>
+" inoremap { {}<left>
+" " inoremap {<CR> {<CR>}<ESC>O
+" " inoremap {;<CR> {<CR>};<ESC>O
+" inoremap {<CR> {<CR>}<ESC>O<TAB>
+" inoremap {;<CR> {<CR>};<ESC>O<TAB>
 
 " let g:ale_statusline_format = ['☀️️ %d', '🕯️ %d', '']
 " let b:ale_fixers = {'javascript': ['prettier', 'eslint']}
@@ -703,7 +715,9 @@ else
 endif
 
 set wildmode=longest,list,full
-set wildmenu
+" set wildmode=longest:full,full
+" set wildmenu
+set wildignorecase
 " set path+=/home/km000057/doc/**,/home/km000057/GIT/mainline/vobs/Opera_Infrastructure_Services/Media/**,/home/km000057/GIT/mainline/vobs/Opera_Platform_Linux/GPAL/GPALMedia/**,/home/km000057/_DWE_/**,/home/km000057/GIT/mainline/vobs/Opera_Infrastructure_Services/Media/Interface/**,/home/km000057/GIT/mainline/vobs/Opera_Infrastructure_Services/Media/VoiceEngine/**,**
 set path+=.,**
 
@@ -1806,3 +1820,9 @@ augroup AutoMkdir
     autocmd!
     autocmd BufWritePre,FileWritePre,BufNewFile * call <SID>AutoMkdir()
 augroup END
+
+
+"retab
+" :%s/\t/  /g
+" :%s/^\t\+/ g
+

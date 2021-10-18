@@ -1,4 +1,19 @@
+set guifont=Ubuntu\ Mono:12
 let g:user_name = $USER
+let g:neovide_refresh_rate=60
+let g:neovide_cursor_trail_length=0
+let g:neovice_cursor_animate_command_line=v:false
+let g:neovice_cursor_animate_in_insert_mode=v:false
+let g:neovide_cursor_animation_length=0
+let g:neovide_cursor_antialiasing=v:false
+
+
+if ( g:user_name == "pc" )
+  let g:cachePath = "/home/pc/tools/cclsCacheNvim/"
+else
+  let g:cachePath = "/home/km000057/HD0/tools/ccls2/nvimcache/"
+endif
+
 " let g:lsp_cl="vimlsp"
 let g:lsp_cl="neocl"
 set nocompatible
@@ -168,6 +183,8 @@ Plug 'ray-x/lsp_signature.nvim'
 Plug 'hrsh7th/nvim-compe'
 Plug 'sindrets/diffview.nvim'
 " Plug 'glepnir/lspsaga.nvim'
+Plug 'kristijanhusak/orgmode.nvim'
+Plug 'akiyosi/gonvim-fuzzy'
 call plug#end()
 
 let g:ale_completion_enabled = 0
@@ -258,6 +275,13 @@ lua require('telescope').load_extension('fzf')
 lua require('telescope').load_extension('bookmarks')
 
 lua <<EOF
+require('orgmode').setup({
+  org_agenda_files = {'~/.config/nvim/bundle/orgFiles/*'},
+  org_default_notes_file = '~/.config/nvim/bundle/orgFiles/refile.org',
+})
+EOF
+
+lua <<EOF
 require'compe'.setup {
   enabled = true;
   autocomplete = true;
@@ -281,6 +305,7 @@ require'compe'.setup {
     nvim_lua = true;
     vsnip = true;
     ultisnips = true;
+    orgmode = true;
   };
 }
 EOF
@@ -333,7 +358,7 @@ local on_attach_vim = function(client)
       compilationDatabaseCommand = "",
       compilationDatabaseDirectory ="",
       lint = false,
-      cache = { directory = "/home/pc/tools/cclsCacheNvim/" },
+      cache = { directory = vim.g['cachePath'] },
       highlight =
         {
           lsRanges = true;
@@ -341,10 +366,13 @@ local on_attach_vim = function(client)
     };
     on_attach = on_attach_vim,
     filetypes = { "c", "cpp" },
-    root_dir = require'lspconfig'.util.root_pattern("compile_commands.json") or dirname
+    root_dir = require'lspconfig'.util.root_pattern("compile_commands.json") or dirname,
+    flags = {
+      debounce_text_changes = 150,
+    }
   })
 EOF
-
+"debounce test it it should send messages to server less often so maybe not necessary for ccls
 
 lua <<EOF
 local cb = require'diffview.config'.diffview_callback
@@ -896,7 +924,9 @@ let g:gundo_prefer_python3=1
 
 let g:DirDiffIgnore=".git,*.d,*.o"
 let g:DirDiffExcludes=".git,*.d,*.o"
-
+" call EnsureDirExists("$HOME/.config/nvim/.backup/")
+" call EnsureDirExists("$HOME/.config/nvim/.swp/")
+" call EnsureDirExists("$HOME/.config/nvim/.undo/")
 set backupdir=~/.config/nvim/.backup/
 set directory=~/.config/nvim/.swp/
 set undofile
@@ -1033,12 +1063,12 @@ set softtabstop=2
 "set shiftwidth=2
 "set tabstop=2
 
-if has("unix")
-  " set guifont=Monospace\ 13
-  set guifont=Ubuntu\ Mono\ 12
-else
-  set guifont=Lucida_Console:h12:b:cANSI:qDRAFT   
-endif
+" if has("unix")
+  " " set guifont=Monospace\ 13
+  " set guifont=Ubuntu\ Mono\ 12
+" else
+  " set guifont=Lucida_Console:h12:b:cANSI:qDRAFT   
+" endif
 
 set wildmode=longest,list,full
 set wildmenu

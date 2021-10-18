@@ -23,7 +23,7 @@ timestamp=$(date +%s)
 i3-msg -t subscribe -m '[ "window" ]' | while read -r event; do
     # echo $event
     # .container.window_properties.instance'
-    res=$(jq --unbuffered -Mrc '. | select(((.change == "title") and (.container.focused == false) and (.container.name|test("(.*[0-9].*)"))) or (.change == "urgent" and .container.urgent == true)) | .container.window' <<< $event)
+    res=$(jq --unbuffered -Mrc '. | select(((.change == "title") and (.container.focused == false) and (.container.name|test("\\([0-9 ]*\\)"))) or (.change == "urgent" and .container.urgent == true)) | .container.window' <<< $event)
     if [[ "$res" != "" ]]; then
 	winText=$(jq --unbuffered -Mrc '.container.name' <<< $event)
 	timenow=$(date +%s)
